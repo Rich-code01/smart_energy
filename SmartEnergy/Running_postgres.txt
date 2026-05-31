@@ -1,0 +1,48 @@
+1. EMQX (Broker)
+      
+2. PostgreSQL (Database)
+      
+3. subscriber.py (listener)
+      
+4. publisher / simulator (sender)
+      
+5. data appears in DB
+
+
+-------------------------------------------------
+Running the broker(EMQX)
+
+Step1: In CMD
+docker run -d --name emqx ^
+-p 1883:1883 ^
+-p 18083:18083 ^
+emqx/emqx:latest
+
+
+Step2: In the browser
+http://localhost:18083
+
+Step3:Write the username and password
+
+Username: admin
+Password: public
+
+
+----------------------------------------
+Creating the table
+------------------------------------
+CREATE TABLE energy_readings (
+    id SERIAL PRIMARY KEY,
+    meter_id TEXT,
+    timestamp TIMESTAMPTZ,
+    power DOUBLE PRECISION,
+    voltage DOUBLE PRECISION,
+    current DOUBLE PRECISION,
+    frequency DOUBLE PRECISION,
+    energy DOUBLE PRECISION
+);
+-------------------------------------------
+
+
+
+
